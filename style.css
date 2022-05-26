@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+  --pizza: rgb(243, 139, 20);
+  --dark: #343a40;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-image: url("images/bg-pizza.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+nav {
+  padding: 0.5rem;
+  background-color: rgba(80, 189, 47, 0.2);
+  display: flex;
+  justify-content: space-around;
+}
+nav div {
+  display: flex;
+}
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+#dropdown button {
+  background: none;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+#dropdown button>*{
+  pointer-events: none;
+}
+#dropdown button:hover {
+  color: #ddd;
+}
+#dropdown button:focus {
+  color: var(--pizza);
+}
+#dropdown-content {
+  padding: 1rem;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  margin: 0 -98px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.cart{
+  display:flex;
+  gap: 2rem;
+  align-items: center;
+}
+.cart{
+  border-bottom: 1px solid #ccc;
+}
+#delete-button{
+  color: red!important;
+}
+#dropdown-content #total-amount{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+#cart-buy{
+  text-align: center;
+}
+#cart-buy-button{
+  text-align: center;
+  background-color: rgb(36, 202, 105)!important;
+  margin: auto 0;
+}
+.show {
+  display: block!important;
+}
+
+#dropdown-content div {
+  color: black;
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+#dropdown-content a:hover {
+  background-color: #ddd;
+}
+nav a {
+  padding: 1rem;
+  color: #f2f2f2;
+  text-decoration: none;
+}
+nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+nav a.active {
+  background-color: var(--pizza);
+  color: white;
+}
+
+.container {
+  height: 100%;
+}
+header {
+  background: linear-gradient(to right, red, yellow);
+  padding: 0.5rem;
+}
+header h1 {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+section article {
+  padding: 1rem;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #fff;
+}
+
+article > * {
+  margin: 0 0 1rem 0;
+}
+
+article button {
+  width: 8rem;
+  margin: 0 auto;
+  border: none;
+  padding: 0.5rem;
+}
+article button:hover {
+  background-color: var(--pizza);
+}
+
+article .product-num{
+  width: 3rem;
+  font-size: large;
+}
+
+article .product-name{
+  text-decoration: none;
+  color: #333;
+}
+article .product-price{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  padding: 0.5rem;
+  margin: 5rem 10rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem;
+  padding-bottom: 5rem;
+}
+main .section-header{
+  color: #fff;
+  padding: 1rem;
+}
+
+main .section-header h1{
+  font-size: xx-large;
+  color: var(--pizza);
+}
+main .section-header p{
+  font-size: large;
+}
+
+main img {
+  width: 250px;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  background-color: #333;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  main {
+    float: none;
+    height: auto;
+    width: auto;
+  }
+
+  main section {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1106px) {
+  main {
+    float: none !important;
+    height: auto;
+    width: auto;
+  }
+
+}
+@media(max-width: 1300px){
+  main{
+    width: 100%!important;
+    margin:auto;
+  }
+}
