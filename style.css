@@ -20,12 +20,14 @@ body {
 
 nav {
   padding: 0.5rem;
-  background-color: rgba(80, 189, 47, 0.2);
+  background-color: rgb(80, 189, 47);
   display: flex;
   justify-content: space-around;
+  box-shadow: 0 0.2rem 0.5rem black;
 }
 nav div {
   display: flex;
+  gap: 1rem;
 }
 #dropdown {
   position: relative;
@@ -86,6 +88,9 @@ nav div {
 .show {
   display: block!important;
 }
+.page{
+  display: none;
+}
 
 #dropdown-content div {
   color: black;
@@ -96,16 +101,19 @@ nav div {
 #dropdown-content a:hover {
   background-color: #ddd;
 }
-nav a {
+nav button {
+  background: none;
   padding: 1rem;
   color: #f2f2f2;
   text-decoration: none;
+  border: none;
 }
-nav a:hover {
+nav button:hover {
   background-color: #ddd;
   color: black;
+  cursor: pointer;
 }
-nav a.active {
+nav button.active {
   background-color: var(--pizza);
   color: white;
 }

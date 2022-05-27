@@ -15,22 +15,22 @@ $allCart = $_SESSION['cart'];
   <link rel="stylesheet" href="style.css" />
   <link rel="shortcut icon" href="images/pizza-icon.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <script defer src="scripts.js"></script>
+  <script defer src="main.js"></script>
 </head>
 
 <body>
   <div class="container">
     <nav>
-      <div>
-        <a class="active" href="#home">Kezdőoldal</a>
-        <a href="#news">Pizzák</a>
-        <a href="#contact">Kapcsolat</a>
+      <div class="tabs">
+        <button data-tab="1" class="tab active">Kezdőoldal</button>
+        <button data-tab="2" class="tab">Pizzák</button>
+        <button data-tab="3" class="tab">Kapcsolat</button>
       </div>
       <div id="dropdown">
         <button id="drop-btn"><i class="fas fa-shopping-cart"></i></button>
         <div id="dropdown-content">
           <?php if (isset($_SESSION['cart'])) : ?>
-            <form action="cartbuy.php" method="POST">
+            <form action="cart-controller/cartbuy.php" method="POST">
               <table>
                 <?php foreach ($_SESSION['cart'] as $key => $cartitem) : ?>
                   <tr class="cart cart-row-<?= $key ?>">
@@ -39,7 +39,7 @@ $allCart = $_SESSION['cart'];
                     <td><?= $cartitem['name'] ?></td>
                     <td><?= $cartitem['price'] ?>Ft</td>
                     <td><?= $cartitem['pieces'] ?>x</td>
-                    <td><button type="submit" name="delete-item-key" value="<?= $key ?>" formaction="delete-cart.php" id="delete-button"><i class="fas fa-trash"><i></button></td>
+                    <td><button type="submit" name="delete-item-key" value="<?= $key ?>" formaction="cart-controller/delete-cart.php" id="delete-button"><i class="fas fa-trash"><i></button></td>
                   </tr>
                 <?php endforeach; ?>
               </table>
@@ -55,46 +55,22 @@ $allCart = $_SESSION['cart'];
         </div>
       </div>
     </nav>
-
-    <main>
-      <section class="section-header">
-        <h1>Bemutatkozás</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-          aperiam provident quos esse impedit, magnam cupiditate tenetur,
-          dolor deserunt fuga tempora tempore nisi veritatis ipsa dignissimos
-          quod saepe exercitationem nihil.
-        </p>
-      </section>
-      <section class="section-product">
-        <?php
-        while ($row = $result->fetch_assoc()) :
-        ?>
-          <form action="addcart.php" method="post">
-            <article>
-              <input type="hidden" name="id" value="<?= $row['id']; ?>">
-              <input type="hidden" name="name" value="<?= $row['name']; ?>">
-              <input type="hidden" name="image" value="<?= $row['image']; ?>">
-              <input type="hidden" name="price" value="<?= $row['price']; ?>">
-              <img src="images/<?= $row['image']; ?>" alt="example" />
-              <a href="#" class="product-name"><?= $row['name']; ?></a>
-              <div class="product-price">
-                <span><?= $row['price']; ?></span><span>Ft</span>
-                <input type="number" value="1" min="1" max="10" class="product-num" name="pieces">
-                <span>db</span>
-              </div>
-              <button type="submit" class="add-to-cart">Kosárba</button>
-            </article>
-          </form>
-        <?php endwhile; ?>
-
-      </section>
+    <main class="main-content">
+      <div class="page show" data-page="1">
+        <?php require "home.php" ?>
+      </div>
+      <div class="page" data-page="2">
+        <?php require "pizza-list.php" ?>
+      </div>
+      <div class="page" data-page="3">
+        <?php require "pizza-list.php" ?>
+      </div>
     </main>
     <footer>
       <span>Copyright &copy;, Example Corporation</span>
     </footer>
   </div>
-  
+
 </body>
 
 </html>

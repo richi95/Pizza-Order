@@ -14,6 +14,28 @@ window.onclick = (e) => {
   }
 };
 
+window.onload = () =>{
+  const tabSwitchers = document.querySelectorAll('.tab');
+  for(let i = 0; i < tabSwitchers.length; i++){
+     const tabSwitcher = tabSwitchers[i]
+     const pageId = tabSwitcher.dataset.tab
+     tabSwitcher.addEventListener('click', function(e){
+       document.querySelector('.tabs .tab.active').classList.remove('active')
+       tabSwitcher.classList.add('active')
+
+       switchPage(pageId)
+     })
+  }
+}
+
+function switchPage(pageId){
+  const currentPage = document.querySelector('.main-content .page.show')
+  currentPage.classList.remove('show')
+
+  const nextPage = document.querySelector(`.main-content .page[data-page="${pageId}"]`)
+  nextPage.classList.add('show')
+}
+
 // function deleteCart(key) {
 //   let deleteRow = document.querySelector(`.cart-row-${key}`);
 //   console.log(deleteRow)
