@@ -141,6 +141,7 @@ section article {
   padding: 1rem;
 }
 
+
 article {
   display: flex;
   flex-direction: column;
@@ -188,6 +189,7 @@ main {
 main .section-header{
   color: #fff;
   padding: 1rem;
+  margin-bottom: 4rem;
 }
 
 main .section-header h1{
@@ -196,6 +198,11 @@ main .section-header h1{
 }
 main .section-header p{
   font-size: large;
+}
+main .section-header .search{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 main img {

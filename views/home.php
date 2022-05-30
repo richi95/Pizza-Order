@@ -6,12 +6,23 @@
         dolor deserunt fuga tempora tempore nisi veritatis ipsa dignissimos
         quod saepe exercitationem nihil.
     </p>
+    <div class="search">
+        <form action="?page=search" method="POST">
+            <input type="text" name="search" placeholder="Keresés">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
 </section>
 <section class="section-product">
     <?php
-    while ($row = $result->fetch_assoc()) :
+      if(isset($_SESSION['search'])){
+          $this->result = $this->connection->query($_SESSION['search']);
+      }
     ?>
-        <form action="cart-controller/addcart.php" method="post">
+    <?php
+    while ($row = $this->result->fetch_assoc()) :   
+    ?>
+        <form action="?page=addcart" method="post">
             <article>
                 <input type="hidden" name="id" value="<?= $row['id']; ?>">
                 <input type="hidden" name="name" value="<?= $row['name']; ?>">
