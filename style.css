@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 :root {
   --pizza: rgb(243, 139, 20);
   --dark: #343a40;
+  --button-green: rgb(36, 202, 105);
 }
 
 * {
@@ -17,6 +18,11 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+.container {
+  height: 100%;
+}
+
+/*navbar*/
 
 nav {
   padding: 0.5rem;
@@ -29,11 +35,31 @@ nav div {
   display: flex;
   gap: 1rem;
 }
+nav button {
+  background: none;
+  padding: 1rem;
+  color: #f2f2f2;
+  text-decoration: none;
+  border: none;
+}
+nav button:hover {
+  background-color: #ddd;
+  color: black;
+  cursor: pointer;
+}
+nav button.active {
+  background-color: var(--pizza);
+  color: white;
+}
+
+/*Kosár*/
+
 #dropdown {
   position: relative;
   display: inline-block;
 }
-#dropdown button {
+#dropdown button,
+.shipping-submit input[type="submit"] {
   background: none;
   color: white;
   padding: 16px;
@@ -41,7 +67,7 @@ nav div {
   border: none;
   cursor: pointer;
 }
-#dropdown button>*{
+#dropdown button > * {
   pointer-events: none;
 }
 #dropdown button:hover {
@@ -61,34 +87,35 @@ nav div {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-.cart{
-  display:flex;
+.cart {
+  display: flex;
   gap: 2rem;
   align-items: center;
 }
-.cart{
+.cart {
   border-bottom: 1px solid #ccc;
 }
-#delete-button{
-  color: red!important;
+#delete-button {
+  color: red !important;
 }
-#dropdown-content #total-amount{
+#dropdown-content #total-amount {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
 }
-#cart-buy{
+#cart-buy {
   text-align: center;
 }
-#cart-buy-button{
+#cart-buy-button,
+.shipping-submit input[type="submit"] {
   text-align: center;
-  background-color: rgb(36, 202, 105)!important;
+  background-color: rgb(36, 202, 105) !important;
   margin: auto 0;
 }
 .show {
-  display: block!important;
+  display: block !important;
 }
-.page{
+.page {
   display: none;
 }
 
@@ -101,35 +128,10 @@ nav div {
 #dropdown-content a:hover {
   background-color: #ddd;
 }
-nav button {
-  background: none;
-  padding: 1rem;
-  color: #f2f2f2;
-  text-decoration: none;
-  border: none;
-}
-nav button:hover {
-  background-color: #ddd;
-  color: black;
-  cursor: pointer;
-}
-nav button.active {
-  background-color: var(--pizza);
-  color: white;
-}
 
-.container {
-  height: 100%;
-}
-header {
-  background: linear-gradient(to right, red, yellow);
-  padding: 0.5rem;
-}
-header h1 {
-  text-align: center;
-}
+/*home pizza lista*/
 
-section {
+.section-product {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -137,10 +139,9 @@ section {
   justify-content: space-around;
 }
 
-section article {
+.section-product article {
   padding: 1rem;
 }
-
 
 article {
   display: flex;
@@ -163,21 +164,23 @@ article button:hover {
   background-color: var(--pizza);
 }
 
-article .product-num{
+article .product-num {
   width: 3rem;
   font-size: large;
 }
 
-article .product-name{
+article .product-name {
   text-decoration: none;
   color: #333;
 }
-article .product-price{
+article .product-price {
   display: flex;
   gap: 1rem;
   justify-content: center;
   align-items: center;
 }
+
+/*main content template beállítások*/
 
 main {
   padding: 0.5rem;
@@ -186,20 +189,20 @@ main {
   border-radius: 0.5rem;
   padding-bottom: 5rem;
 }
-main .section-header{
+main .section-header {
   color: #fff;
   padding: 1rem;
   margin-bottom: 4rem;
 }
 
-main .section-header h1{
+main .section-header h1 {
   font-size: xx-large;
   color: var(--pizza);
 }
-main .section-header p{
+main .section-header p {
   font-size: large;
 }
-main .section-header .search{
+main .section-header .search {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -208,6 +211,166 @@ main .section-header .search{
 main img {
   width: 250px;
 }
+
+/*Vásárlási folyamat oldal választók*/
+
+.tab-buy-buttons {
+  display: flex;
+}
+.tab-buy-buttons button {
+  border: none;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+  padding: 1rem;
+}
+.tab-buy-buttons button.active {
+  background-color: var(--dark);
+  color: #fff;
+  transition: background-color 250ms linear;
+}
+
+/*Vásárlási folyamatok*/
+.button-back {
+  border: 2px solid var(--dark);
+  border-radius: 2px;
+  background-color: #fff;
+  padding: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button-back:hover {
+  border-color: var(--pizza);
+  color: var(--pizza);
+}
+
+.button-next,
+.button-final {
+  border: none;
+  border-radius: 2px;
+  background-color: var(--dark);
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button-next:hover {
+  color: var(--pizza);
+}
+
+.button-final:hover {
+  color: var(--button-green);
+}
+
+.shipping-methods {
+  background-color: #fff;
+  padding: 2rem 10rem;
+}
+.shipping-methods input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+}
+.shipping-methods .shipping label {
+  margin: 2rem 0 1rem;
+}
+.shipping-methods input:focus {
+  box-shadow: 0px 0px 5px var(--pizza);
+  border: var(--pizza);
+  outline: none;
+}
+.shipping-form {
+  display: flex;
+  gap: 5rem;
+}
+.shipping-form label {
+  font-weight: bold;
+}
+.shipping,
+.billing {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-submit {
+  display: flex;
+  justify-content: space-between;
+}
+.shipping-submit input[type="submit"],
+.shipping-submit button {
+  margin-top: 5rem;
+}
+
+.shipping-methods .summary {
+  background-color: rgba(204, 204, 204, 0.5);
+  padding: 1rem;
+}
+
+.shipping-methods .summary > .summary-price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.shipping-methods .billing {
+  margin-top: 2rem;
+}
+
+.shipping-methods .billing div {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.shipping-methods .summary-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 0.1fr;
+  grid-template-areas:
+    "shippingData billingData summary"
+    "summaryPriceData summaryPriceData summary"
+    "summarySubmit summarySubmit summary";
+}
+#summary-price-data p:nth-child(2) {
+  font-weight: bold;
+}
+
+#shipping-data {
+  grid-area: shippingData;
+}
+#billing-data {
+  grid-area: billingData;
+}
+#summary {
+  grid-area: summary;
+}
+#summary-price-data {
+  grid-area: summaryPriceData;
+}
+#summary-submit {
+  grid-area: summarySubmit;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.summary-grid > #summary-price-data > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.success {
+  width: 100%;
+  padding: .5rem;
+  background-color: rgb(80, 189, 47);
+  text-align: center;
+  color: #fff;
+}
+
+/*Footer*/
 
 footer {
   bottom: 0;
@@ -218,6 +381,24 @@ footer {
   color: white;
 }
 
+/*reszponzivitás*/
+
+@media (max-width: 1106px) {
+  main {
+    float: none !important;
+    height: auto;
+    width: auto;
+  }
+  .shipping-methods .summary-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 0.1fr;
+    grid-template-areas:
+      "shippingData billingData"
+      "summaryPriceData summaryPriceData"
+      "summary summary"
+      "summarySubmit summarySubmit";
+  }
+}
 @media (max-width: 768px) {
   main {
     float: none;
@@ -228,19 +409,28 @@ footer {
   main section {
     justify-content: center;
   }
-}
 
-@media (max-width: 1106px) {
-  main {
-    float: none !important;
-    height: auto;
-    width: auto;
+  .shipping-form {
+    flex-direction: column;
   }
-
+  .shipping-methods .summary-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 0.1fr;
+    grid-template-areas:
+      "shippingData"
+      "billingData"
+      "summaryPriceData"
+      "summary"
+      "summarySubmit";
+  }
+  .shipping-methods {
+    padding: 0.5rem;
+    margin: 0;
+  }
 }
-@media(max-width: 1300px){
-  main{
-    width: 100%!important;
-    margin:auto;
+@media (max-width: 1300px) {
+  main {
+    width: 100% !important;
+    margin: auto;
   }
 }

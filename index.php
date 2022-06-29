@@ -7,8 +7,14 @@ spl_autoload_register(function($file){
 $init = new classes\Init;
 $connection = $init->db_connection();
 
-$page = new classes\Controller($connection);
+$resource = new classes\Controller($connection);
 
-$urlpage = $_GET["page"]??false ? $_GET["page"] : 'render';
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+  $url = 'render';
+}else{
+  $url = $_GET['action'];
+}
 
-$page->$urlpage();
+// $url = $_GET['action']?? false ? $_GET['action'] : 'render';
+
+$resource->$url();

@@ -7,7 +7,7 @@
         quod saepe exercitationem nihil.
     </p>
     <div class="search">
-        <form action="?page=search" method="POST">
+        <form action="?action=search" method="POST">
             <input type="text" name="search" placeholder="Keresés">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
@@ -22,7 +22,7 @@
     <?php
     while ($row = $this->result->fetch_assoc()) :   
     ?>
-        <form action="?page=addcart" method="post">
+        <form action="?action=addcart" method="POST">
             <article>
                 <input type="hidden" name="id" value="<?= $row['id']; ?>">
                 <input type="hidden" name="name" value="<?= $row['name']; ?>">

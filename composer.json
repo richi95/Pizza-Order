@@ -1,0 +1,19 @@
+{
+    "name": "richi95/pizza-project",
+    "description": "pizza webshop alkalmazás",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Richi95\\PizzaProject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "richi95",
+            "email": "richi950903@gmail.com"
+        }
+    ],
+    "require": {
+        "waavi/sanitizer": "^1.0"
+    }
+}
